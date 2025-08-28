@@ -1,21 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m"
-  xmlns:layout="sap.ui.layout"
-  xmlns:form="sap.ui.layout.form"
-  xmlns:core="sap.ui.core"
-  xmlns:richtexteditor="sap.ui.richtexteditor"
-  xmlns:viz="sap.viz.ui5"
-  controllerName="preview.app.controller.HelloWorldView"
-  displayBlock="true">
-  <Page title="HelloWorldView" enableScrolling="true">
-    <content>
-      <Page id="page_ez8hj70x" title="HelloWorld">
-        <form:SimpleForm id="simpleform_54wp417i" editable="true" layout="ResponsiveGridLayout">
-          <Label id="label_ax623w4r" text="Message:"/>
-          <Button id="button_d8hpy16l" text="Say Hello World" type="Emphasized"/>
-        </form:SimpleForm>
-      </Page>
-    </content>
-  </Page>
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	controllerName="converted.helloworldview.controller.HelloWorldView"
+	displayBlock="true"
+          xmlns:commons="sap.ui.commons">
+	<Page title="Material Data" enableScrolling="true">
+		<content>
+			<form:SimpleForm id="simpleForm" editable="true" layout="ResponsiveGridLayout">
+				<form:content>
+					<Label text="Material Number:" />
+					<Input value="{/materialNumber}" liveChange="onLiveChangeMaterialNumber"/>
+					<Label text="Created On:" />
+					<DatePicker value="{/createdOn}" displayFormat="yyyy-MM-dd" />
+					<Label text="Created Time:" />
+					<TimePicker value="{/createdTime}" />
+					<Label text="Created By:" />
+					<Input value="{/createdBy}" />
+					<Label text="Material Type:" />
+					<Input value="{/materialType}" />
+					<Label text="Material Group:" />
+					<Input value="{/materialGroup}" />
+					<Label text="Radio Group:" />
+          <RadioButtonGroup id="radioButtonGroup" buttons="{/radioButtons}" selectedKey="{/radioGroup}" />
+          <CheckBox text="CHECKBOX 1" selected="{/checkbox1}" />
+          <CheckBox text="CHECKBOX 2" selected="{/checkbox2}" />
+				</form:content>
+        <buttons>
+          <Button text="GET DATA" type="Emphasized" press="onGetData" />
+          <Button text="EXIT" type="Emphasized" press="onExit" />
+        </buttons>
+			</form:SimpleForm>
+		</content>
+	</Page>
 </mvc:View>
