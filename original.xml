@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebDynpro xmlns="http://www.sap.com/wd/webdynpro">
+  <View name="HelloWorldView">
+    <Title>Hello World</Title>
+    <FormContainer id="formContainer">
+      <FormElement id="formElement">
+        <Label id="labelMessage" text="Message:"/>
+        <TextView id="textViewMessage" text="{/HelloWorldView/message}"/>
+      </FormElement>
+      <FormElement id="buttonElement">
+        <Button id="buttonHelloWorld" text="Say Hello World" press="handleButtonPress"/>
+      </FormElement>
+    </FormContainer>
+    <MessageArea id="messageArea"/>
+  </View>
+  <Controller name="HelloWorldViewController">
+    <!-- Methods -->
+    <Method name="handleButtonPress">
+      <Source>
+        <![CDATA[
+          wdContext.nodeHelloWorld().bind(wdContext.createHelloWorld());
+          wdContext.nodeHelloWorld().currentHelloWorld().setMessage("Hello World!");
+          wdContext.nodeHelloWorld().currentHelloWorld().setCounter(1); //Added for testing purposes
+
+          //Example of message handling
+          wdComponentAPI.getMessageManager().reportSuccess("Hello World button pressed!");
+        ]]>
+      </Source>
+    </Method>
+    <Context name="HelloWorld">
+        <Node name="HelloWorld">
+            <Attribute name="message" type="string"/>
+            <Attribute name="counter" type="integer"/>
+        </Node>
+    </Context>
+    <!-- Dummy data for testing -->
+    <WDData>
+        <HelloWorld>
+            <HelloWorld message="Initial Message" counter="0"/>
+        </HelloWorld>
+    </WDData>
+
+  </Controller>
+</WebDynpro>
